@@ -3,62 +3,56 @@ const initialItems = [
     { id: 2, description: "Socks", quantity: 12, packed: false },
 ];
 
-
-export default function App(){
+export default function App() {
     return (
         <div>
-            <Logo/>
-            <Form/>
-            <PackingList/>
-            <Stats/>
+            <Logo />
+            <Form />
+            <PackingList />
+            <Stats />
         </div>
-    )
+    );
 }
 
-function Logo(){
-  return(
-      <h1>
-        Far Away✈️
-      </h1>
-  )
+function Logo() {
+    return <h1>Far Away✈️</h1>;
 }
 
-function Form(){
-    return(
+function Form() {
+    return (
         <div className="add-form">
-            <h3>
-                What do you need for your trip ➕?
-            </h3>
+            <h3>What do you need for your trip ➕?</h3>
         </div>
-    )
-
+    );
 }
 
-function PackingList(){
+function PackingList() {
     return (
         <div className="list">
-        <ul>
-            {initialItems.map((item)=>(<Item item={item}/>))}
-        </ul>
+            <ul>
+                {initialItems.map((item) => (
+                    <Item key={item.id} item={item} />
+                ))}
+            </ul>
         </div>
-    )
+    );
 }
 
-function Item(item){
-    return(
+// Destructured item object in Item component
+function Item({ item }) {
+    return (
         <li>
-            {item.description}
-            {item.name}
+            {item.description} - Quantity: {item.quantity}
         </li>
-    )
+    );
 }
 
-function Stats(){
+function Stats() {
     return (
         <footer className="stats">
             <em>
-                You have X items on list , and you already packed X
+                You have {initialItems.length} items on your list, and you already packed 0.
             </em>
         </footer>
-    )
+    );
 }
